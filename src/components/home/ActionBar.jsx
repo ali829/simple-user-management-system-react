@@ -1,12 +1,12 @@
 // import React from "react"
 import { BiSearchAlt , BiPlus } from 'react-icons/bi';
 import { useNavigate } from "react-router-dom";
-const ActionBar = () => {
+const ActionBar = ({term}) => {
   const navigate = useNavigate();
   return (
     <div className="w-full flex justify-between items-center">
       <div className="w-3/12 px-5 py-2 ring-1 ring-primary-800 rounded-full flex justify-between items-center">
-        <input placeholder='Filter Users...' type="text" className="text-primary-50 outline-none bg-transparent border-none w-full"/>
+        <input placeholder='Filter Users...' type="text" className="text-primary-50 outline-none bg-transparent border-none w-full" onChange={(e) =>{term(e.target.value)}}/>
         <BiSearchAlt className='text-primary-50 text-xl cursor-pointer transition-all duration-[0.5s] ease-out hover:scale-110'/>
       </div>
       <div>
