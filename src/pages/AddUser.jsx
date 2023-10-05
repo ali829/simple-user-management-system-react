@@ -12,8 +12,8 @@ const AddUser = () => {
         setUsers(getStoredUsers)
     },[])
   return (
-    <div className="w-4/6 mx-auto">
-        <Form submitHandler={createUser}/>
+    <div className="w-4/6 max-lg:w-full mx-auto">
+        <Form submitHandler={createUser} formTitle='add user'/>
     </div>
   )
 }

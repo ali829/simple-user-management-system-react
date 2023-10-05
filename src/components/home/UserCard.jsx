@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import {BiEditAlt , BiTrashAlt } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+
 const UserCard = ({user , deleteModal}) => {
+    const navigate = useNavigate();
     const generateInitials = ()=>{
         const fullNameArray  = user.fullName.split(' ');
         const initialsArray = fullNameArray .map(fullName => fullName.charAt(0))
@@ -22,7 +25,7 @@ const UserCard = ({user , deleteModal}) => {
                 <p className="text-xs text-gray-300">{user.role}</p>
             </div>
             <div className="flex justify-between items-center space-x-4">
-            <button className="transition-all duration-[0.5s] ease-out h-9 w-9 rounded-full  ring-1 ring-gray-400  hover:bg-green-600  flex justify-center items-center text-white cursor-pointer">
+            <button onClick={()=>{navigate(`edit/${user.id}`)}} className="transition-all duration-[0.5s] ease-out h-9 w-9 rounded-full  ring-1 ring-gray-400  hover:bg-green-600  flex justify-center items-center text-white cursor-pointer">
                 <BiEditAlt/>
             </button>
             <button onClick={()=>{handleDelete(user.id)}} className="transition-all duration-[0.5s] ease-out h-9 w-9 rounded-full  ring-1 ring-gray-400  hover:bg-red-600  flex justify-center items-center text-white cursor-pointer">

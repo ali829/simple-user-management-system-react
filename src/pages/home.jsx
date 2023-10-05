@@ -25,7 +25,7 @@ const Home = () => {
 
   /** search functionality */
   const searchByTerm = (term)=>{
-    const results = users.filter(user => user.fullName.includes(term))
+    const results = users.filter(user => user.fullName.toLowerCase().includes(term.toLowerCase()))
     if (term) {
       setUsers(results)
     }else{
@@ -44,7 +44,7 @@ const Home = () => {
     <>
       <ActionBar term={searchByTerm}/>
         {(users.length < 1) ? (<EmptyResult/>) : 
-        (<div className="grid grid-cols-3 w-full my-16 gap-2">
+        (<div className="grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 w-full my-16 gap-2">
          { users.map((user , index) => (
             <UserCard user={user} key={index} deleteModal={toggleDeleteModal}/>
          ))}
